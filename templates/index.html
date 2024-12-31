@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Classical Nahuatl Spelling Normalizer</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <header class="intro">
+            <h1>Classical Nahuatl Spelling Normalizer</h1>
+
+            <p>This is a spelling normalizer (corrector) for Classical Nahuatl. It uses the ACK (Andrews-Campbell-Karttunen) spelling. This is a spelling system devised by its eponymous scholars: J. Richard Andrews, R.Joseph Campbell, and Frances Karttunen. It is based off the Classical Nahuatl spelling system.</p>
+            <br>
+            <p><b>Note:</b> This normalizer works best on shorter phrases.</p>
+            <p><b>Another note:</b> If the normalized spelling does not look right, feel free to edit the text in the textbox.</p>
+        </header>
+        <div class="normalization">
+            <form class="submission" method="POST" action="/predict">
+                <h3>Input the phrase you want to normalize.</h3>
+                <textarea
+                id="unnormalized"
+                rows="8"
+                cols="60"
+                name="unnormalized-phrase"
+                placeholder="Unnormalized phrase here">{{ text }}</textarea>
+                <input class="clickable" type="submit" value="Submit">
+            </form>
+            <form class="receiving">
+                {% if prediction %}
+                <h3 class="norm">Here is the normalized phrase:</h3>
+                <textarea
+                class="norm"
+                id="normalized"
+                rows="8"
+                cols="60"
+                name="normalized-phrase">{{ prediction }}</textarea>
+                <button class="norm" type="button" onclick="copyAndChange()">Copy to clipboard</button>
+                {% else %}
+                <h3 class="no-norm"></h3>
+                <textarea
+                class="no-norm"
+                id="normalized"
+                cols="60"></textarea>
+                <button class="no-norm"></button>
+                {% endif %}
+            </form>
+        </div>
+        <footer>
+            <nav>
+                <a href="/about">About the Project</a>
+            </nav>
+        </footer>
+        <script>
+            function copyAndChange() {
+                const button = document.querySelector("button.norm");
+                const original = button.textContent;
+
+                button.textContent = "Copied!";
+
+                const textarea = document.getElementById("normalized");
+                navigator.clipboard.writeText(textarea.value);
+
+                setTimeout(() => {
+                    button.textContent = original;
+                }, 750);
+            }
+        </script>
+    </body>
+</html>

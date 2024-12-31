@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>About the Project</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <header class="intro">
+            <h1>Classical Nahuatl Spelling Normalizer</h1>
+        </header>
+        </div>
+        <div class="ortho-explain">
+            <h2>About the ACK Orthography</h2>
+            <p>
+                The normalizer outputs the normalized phrase in the ACK (Andrews-Campbell-Karttunen) spelling system.
+                This is a spelling system devised by its eponymous scholars: J. Richard Andrews, R.Joseph Campbell, and Frances Karttunen.
+            </p>
+            <p>
+                It is based off the Classical Nahuatl spelling system.
+                Classical Nahuatl was written at a time before spelling was standardized; ACK provides a more standardized spelling.
+                Writers did not write the glottal fricative (the "h" sound) at the end of syllables, but ACK adds the letter representing the sound at the expected places.
+            </p>
+        </div>
+        <div class="data-explain">
+            <h2>About the Dataset and Training Process</h2>
+            <p>A transformer was trained from scratch.</p>
+        </div>
+        <div class="to-do">
+            <h2>To-Do</h2>
+            <ul>
+                <li>Add examples of unstandardized spelling.</li>
+                <li>Add examples of standardized spelling.</li>
+                <li>Describe the training process and dataset</li>
+                <li>Add docstrings to the normalizer module</li>
+            </ul>
+        </div>
+    </body>
+</html>
